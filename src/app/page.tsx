@@ -1,103 +1,145 @@
+"use client";
+import { ThreeDMarquee } from "@/components/3d-marquee";
+import { cards } from "@/assets/cards";
 import Image from "next/image";
+import logo from "@/assets/logo.svg";
+import { useState } from "react";
+import Link from "next/link";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // Handle form submission here
+    setSubmitted(true);
+    setEmail("");
+  };
+  const images = [
+    cards.greenCardFront.src,
+    cards.greenCardBack.src,
+    cards.blackCardFront.src,
+    cards.blackCardBack.src,
+    cards.materialCardFront.src,
+    cards.materialCardBack.src,
+    cards.greenCardFront.src,
+    cards.greenCardBack.src,
+    cards.blackCardFront.src,
+    cards.blackCardBack.src,
+    cards.materialCardFront.src,
+    cards.materialCardBack.src,
+    cards.greenCardFront.src,
+    cards.greenCardBack.src,
+    cards.blackCardFront.src,
+    cards.blackCardBack.src,
+    cards.materialCardFront.src,
+    cards.materialCardBack.src,
+    cards.greenCardFront.src,
+    cards.greenCardBack.src,
+    cards.blackCardFront.src,
+    cards.blackCardBack.src,
+    cards.materialCardFront.src,
+    cards.materialCardBack.src,
+    cards.greenCardFront.src,
+    cards.greenCardBack.src,
+    cards.blackCardFront.src,
+    cards.blackCardBack.src,
+    cards.materialCardFront.src,
+    cards.materialCardBack.src,
+    cards.greenCardFront.src,
+    cards.greenCardBack.src,
+    cards.blackCardFront.src,
+    cards.blackCardBack.src,
+    cards.materialCardFront.src,
+    cards.materialCardBack.src,
+    cards.greenCardFront.src,
+    cards.greenCardBack.src,
+    cards.blackCardFront.src,
+    cards.blackCardBack.src,
+    cards.materialCardFront.src,
+    cards.materialCardBack.src,
+    cards.greenCardFront.src,
+    cards.greenCardBack.src,
+    cards.blackCardFront.src,
+    cards.blackCardBack.src,
+    cards.materialCardFront.src,
+    cards.materialCardBack.src,
+  ];
+  return (
+    <div className="fixed  flex h-screen w-full flex-col items-center justify-center overflow-hidden">
+      {/* Background with improved overlay */}
+      <div className="absolute inset-0 z-0">
+        <ThreeDMarquee className="pointer-events-none h-full w-full" images={images} />
+        <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/90 via-black/70 to-black/90 backdrop-blur-sm" />
+      </div>
+
+      {/* Content Container with better spacing */}
+      <div className="relative z-20 flex w-full max-w-4xl flex-col items-center px-6">
+        {/* Logo */}
+        <Image src={logo} alt="Flex Card" className="h-auto w-48 md:w-64 mb-12" priority />
+
+        {/* Heading */}
+        <h2 className="mx-auto max-w-4xl text-center text-3xl font-bold text-balance text-white md:text-5xl lg:text-6xl">
+          Coming
+          <span
+            className="relative inline-block ml-3 rounded-xl bg-blue-600/40 px-6 py-2 text-white backdrop-blur-md
+            shadow-lg shadow-blue-900/20 border border-blue-500/20"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            Soon
+            <span className="absolute -bottom-2 left-0 right-0 h-1.5 bg-blue-500 rounded-full transform translate-y-4"></span>
+          </span>
+        </h2>
+
+        {/* Description with better width constraints */}
+        <p className="mx-auto max-w-2xl py-8 text-center text-base text-neutral-200 md:text-lg">
+          We&apos;re working hard behind the scenes to bring you an exciting new experience with Flex Card — a smarter,
+          more flexible way to manage your digital world.
+        </p>
+
+        {/* Email Signup Form - New Addition */}
+        <div className="w-full max-w-md mt-6">
+          {!submitted ? (
+            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2 w-full">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="flex-grow px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 backdrop-blur-md"
+              />
+              <button
+                type="submit"
+                className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-300"
+              >
+                Notify Me
+              </button>
+            </form>
+          ) : (
+            <div className="text-center py-3 px-4 bg-green-600/20 border border-green-500/30 rounded-lg backdrop-blur-md">
+              <p className="text-white">Thanks! We&apos;ll notify you when we launch.</p>
+            </div>
+          )}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Social Media Icons - New Addition */}
+        <div className="flex gap-6 mt-12">
+          {["twitter", "instagram", "linkedin"].map((social) => (
+            <Link
+              key={social}
+              href={`#${social}`}
+              className="text-gray-400 hover:text-white transition-colors duration-300"
+              aria-label={social}
+            >
+              <div className="w-6 h-6 flex items-center justify-center">
+                {/* Social icon placeholders */}
+                <div className="w-full h-full rounded-full bg-white/20"></div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
