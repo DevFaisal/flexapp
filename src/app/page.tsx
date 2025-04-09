@@ -12,23 +12,10 @@ export default function Home() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle form submission here
     setSubmitted(true);
     setEmail("");
   };
   const images = [
-    cards.greenCardFront.src,
-    cards.greenCardBack.src,
-    cards.blackCardFront.src,
-    cards.blackCardBack.src,
-    cards.materialCardFront.src,
-    cards.materialCardBack.src,
-    cards.greenCardFront.src,
-    cards.greenCardBack.src,
-    cards.blackCardFront.src,
-    cards.blackCardBack.src,
-    cards.materialCardFront.src,
-    cards.materialCardBack.src,
     cards.greenCardFront.src,
     cards.greenCardBack.src,
     cards.blackCardFront.src,
@@ -71,7 +58,7 @@ export default function Home() {
       {/* Background with improved overlay */}
       <div className="absolute inset-0 z-0">
         <ThreeDMarquee className="pointer-events-none h-full w-full" images={images} />
-        <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/90 via-black/70 to-black/90 backdrop-blur-sm" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/80 via-black/60 to-black/80 backdrop-blur-sm" />
       </div>
 
       {/* Content Container with better spacing */}
